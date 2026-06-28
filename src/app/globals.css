@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   GoGoChinaTrips design tokens
+   "Playful Editorial Travel Commerce"
+--------------------------------------------------------------------------- */
+:root {
+  --ink: #111111;
+  --ivory: #f5f1e8;
+  --paper: #fffdf8;
+  --gogo-red: #ff4b35;
+  --electric-blue: #3155ff;
+  --jade: #009b7a;
+  --soft-gray: #e8e6df;
+  --muted-text: #66645f;
+  --white: #ffffff;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: var(--soft-gray);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--ivory);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Visible, high-contrast focus state for keyboard users. */
+  :focus-visible {
+    outline: 3px solid var(--electric-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Respect reduced-motion preferences globally. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Compact uppercase label used for eyebrows and category tags. */
+  .label-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em];
+  }
+
+  /* Editorial container with consistent gutters. */
+  .container-site {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Primary vermilion CTA. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-gogo-red px-6 py-3 text-sm font-semibold text-white transition-transform duration-200 ease-editorial hover:-translate-y-0.5 hover:shadow-lift focus-visible:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-ink bg-transparent px-6 py-3 text-sm font-semibold text-ink transition-colors duration-200 ease-editorial hover:bg-ink hover:text-white;
+  }
+
+  .btn-blue {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-electric-blue px-6 py-3 text-sm font-semibold text-white transition-transform duration-200 ease-editorial hover:-translate-y-0.5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-pill border border-soft-gray bg-paper px-4 py-2 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink;
+  }
+}
+
+/* Hide scrollbars on horizontal scroll regions while keeping accessibility. */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
