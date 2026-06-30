@@ -5,6 +5,8 @@ import { getAllDestinations } from "@/content/destinations";
 import { getAllTravelStyles } from "@/content/travel-styles";
 import { getAllArticles } from "@/content/articles";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.url;
   const staticRoutes = ["", "/trips", "/destinations", "/travel-styles", "/china-guide", "/plan-my-trip", "/about", "/contact"];

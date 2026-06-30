@@ -12,12 +12,7 @@ export const metadata: Metadata = buildMetadata({
   path: "/trips",
 });
 
-export default async function TripsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ q?: string }>;
-}) {
-  const { q } = await searchParams;
+export default function TripsPage() {
   const trips = getAllTrips();
 
   return (
@@ -38,7 +33,7 @@ export default async function TripsPage({
         intro="From four-hour food crawls to three-week grand tours — find the trip that fits how you travel."
       />
       <section className="container-site py-10">
-        <TripsExplorer trips={trips} initialQuery={q ?? ""} />
+        <TripsExplorer trips={trips} />
       </section>
     </>
   );

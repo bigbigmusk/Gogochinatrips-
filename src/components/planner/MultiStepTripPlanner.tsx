@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, ShieldCheck, Clock } from "lucide-react";
 import { getAllDestinations } from "@/content/destinations";
 import { cn } from "@/lib/utils";
@@ -79,7 +79,17 @@ function toggle<T>(arr: T[], v: T): T[] {
 
 export function MultiStepTripPlanner({ presetTrip }: { presetTrip?: string }) {
   const destinations = getAllDestinations();
+  const [preset, setPreset] = useState<string | undefined>(presetTrip);
   const [step, setStep] = useState(0);
+
+  // Read ?trip= / ?destination= from the URL on mount so the page stays
+  // statically exportable (no server-side searchParams).
+  useEffect(() => {
+    if (presetTrip) return;
+    const params = new URLSearchParams(window.location.search);
+    const value = params.get("trip") ?? params.get("destination");
+    if (value) setPreset(value);
+  }, [presetTrip]);
   const [form, setForm] = useState<PlannerForm>(INITIAL);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -140,9 +150,9 @@ export function MultiStepTripPlanner({ presetTrip }: { presetTrip?: string }) {
       </div>
 
       <div className="rounded-card border border-soft-gray bg-paper p-6 shadow-card md:p-8">
-        {presetTrip && step === 0 && (
+        {preset && step === 0 && (
           <p className="mb-5 rounded-card bg-ivory px-4 py-3 text-sm">
-            Planning around <span className="font-semibold">{presetTrip}</span> — add anything else below.
+            Planning around <span className="font-semibold">{preset}</span> — add anything else below.
           </p>
         )}
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SlidersHorizontal, X, LayoutGrid, List } from "lucide-react";
 import type { Trip } from "@/content/types";
 import { TripCard } from "@/components/cards/TripCard";
@@ -69,6 +69,14 @@ function countActive(f: Filters): number {
 export function TripsExplorer({ trips, initialQuery = "" }: { trips: Trip[]; initialQuery?: string }) {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [query, setQuery] = useState(initialQuery);
+
+  // Read the ?q= search term from the URL on mount. Done client-side so the
+  // page stays statically exportable (no server-side searchParams).
+  useEffect(() => {
+    if (initialQuery) return;
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) setQuery(q);
+  }, [initialQuery]);
   const [sort, setSort] = useState<SortKey>("recommended");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [sheetOpen, setSheetOpen] = useState(false);

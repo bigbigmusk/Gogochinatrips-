@@ -10,14 +10,7 @@ export const metadata: Metadata = buildMetadata({
   path: "/plan-my-trip",
 });
 
-export default async function PlanMyTripPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ trip?: string; destination?: string }>;
-}) {
-  const { trip, destination } = await searchParams;
-  const preset = trip ?? destination;
-
+export default function PlanMyTripPage() {
   return (
     <>
       <PageHeader
@@ -30,7 +23,7 @@ export default async function PlanMyTripPage({
         intro="A few quick questions and a real China trip designer takes it from there. It's free, and there's no obligation to book."
       />
       <section className="container-site py-10">
-        <MultiStepTripPlanner presetTrip={preset} />
+        <MultiStepTripPlanner />
       </section>
     </>
   );
