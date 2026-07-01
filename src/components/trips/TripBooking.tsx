@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Check, MessageCircle, Calendar } from "lucide-react";
 import type { Departure } from "@/content/types";
+import { SITE } from "@/content/site";
 import { formatPriceUSD, cn } from "@/lib/utils";
 
 function formatDate(iso: string) {
@@ -99,7 +100,13 @@ export function TripBooking({ tripName, fromPriceUSD, departures, durationLabel 
             <span className="font-display text-xl font-bold">{formatPriceUSD(price)}</span>
           </div>
           <div className="flex items-center gap-2">
-            <a href="#" aria-label="Contact us on WhatsApp" className="btn-secondary px-4 py-2.5">
+            <a
+              href={SITE.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact us on WhatsApp"
+              className="btn-secondary px-4 py-2.5"
+            >
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </a>
             <Link href={planHref} className="btn-primary px-6 py-2.5">

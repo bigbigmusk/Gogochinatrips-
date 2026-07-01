@@ -12,7 +12,9 @@ export const SITE = {
     "Small-group trips, private journeys and local experiences designed by people who actually live here.",
   url: "https://www.gogochinatrips.com",
   email: "hello@gogochinatrips.com",
-  whatsapp: "+86 100 0000 000",
+  // Display number and the corresponding wa.me link (digits only, no + or spaces).
+  whatsapp: "+86 185 7554 9201",
+  whatsappUrl: "https://wa.me/8618575549201",
   description:
     "Curated small-group tours, private journeys and local experiences across China for international travelers. China, without the guesswork.",
 } as const;

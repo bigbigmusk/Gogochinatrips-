@@ -46,7 +46,14 @@ export default function ContactPage() {
               <MessageCircle className="h-5 w-5 shrink-0 text-gogo-red" aria-hidden="true" />
               <div>
                 <h2 className="font-semibold">WhatsApp</h2>
-                <p className="text-sm text-muted-text">{SITE.whatsapp}</p>
+                <a
+                  href={SITE.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-text hover:text-ink"
+                >
+                  {SITE.whatsapp}
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-card border border-soft-gray bg-paper p-5">
