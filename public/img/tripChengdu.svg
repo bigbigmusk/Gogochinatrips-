@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067" viewBox="0 0 1600 1067" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067" viewBox="0 0 1600 1067" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(41)">
-      <stop offset="0" stop-color="#009B7A"/>
-      <stop offset="1" stop-color="#B5361F"/>
+    <linearGradient id="g" gradientTransform="rotate(16)">
+      <stop offset="0" stop-color="#E8503A"/>
+      <stop offset="1" stop-color="#1B1B24"/>
     </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="55%">
+      <stop offset="0" stop-color="#FFFDF8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFDF8" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="1600" height="1067" fill="url(#g)"/>
-  <circle cx="1280" cy="298.76000000000005" r="149.38000000000002" fill="#FFFDF8" opacity="0.14"/>
-  <polygon points="0,1067 0,714 267,773 533,762 800,698 1067,674 1333,725 1600,777 1600,1067" fill="#FFFDF8" opacity="0.1"/>
-  <polygon points="0,1067 0,816 267,898 533,884 800,794 1067,760 1333,832 1600,904 1600,1067" fill="#FFFDF8" opacity="0.16"/>
-  <rect x="88" y="85.36" width="360" height="60" rx="30" fill="#FFFDF8" opacity="0.9"/>
-  <text x="121" y="125.86" font-family="Space Grotesk, Arial, sans-serif" font-size="30" font-weight="700" fill="#111111">GoGoChinaTrips</text>
-  <text x="88" y="960.3000000000001" font-family="Space Grotesk, Arial, sans-serif" font-size="117" font-weight="700" fill="#FFFDF8">Chengdu &amp; Pandas</text>
-  <text x="88" y="1008.3000000000001" font-family="Arial, sans-serif" font-size="25.5" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+  <rect width="1600" height="1067" fill="url(#glow)"/>
+  <circle cx="1248" cy="277" r="107" fill="#FFFDF8" opacity="0.10"/>
+  <polygon points="0,1067 0,693 320,745 640,753 960,707 1280,658 1600,659 1600,1067" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1067 0,895 320,849 640,785 960,773 1280,826 1600,886 1600,1067" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1067 0,935 320,918 640,948 960,991 1280,1001 1600,966 1600,1067" fill="#FFFDF8" opacity="0.14"/>
+  <rect x="64" y="949.9" width="30" height="53" rx="2" fill="#FF4B35"/>
+  <text x="117.1" y="1003" font-family="'Space Grotesk', Arial, sans-serif" font-size="59" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Chengdu</text>
 </svg>

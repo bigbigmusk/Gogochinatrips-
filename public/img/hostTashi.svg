@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="700" height="800" viewBox="0 0 700 800" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="800" viewBox="0 0 700 800" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(59)">
+    <linearGradient id="g" gradientTransform="rotate(24)">
       <stop offset="0" stop-color="#C43A28"/>
-      <stop offset="1" stop-color="#111111"/>
+      <stop offset="1" stop-color="#161616"/>
     </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="55%">
+      <stop offset="0" stop-color="#FFFDF8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFDF8" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="700" height="800" fill="url(#g)"/>
-  <circle cx="560" cy="224.00000000000003" r="112.00000000000001" fill="#FFFDF8" opacity="0.14"/>
-  <polygon points="0,800 0,506 117,521 233,569 350,581 467,538 583,504 700,528 700,800" fill="#FFFDF8" opacity="0.1"/>
-  <polygon points="0,800 0,571 117,591 233,659 350,675 467,616 583,568 700,602 700,800" fill="#FFFDF8" opacity="0.16"/>
-  <rect x="38.5" y="64" width="264" height="44" rx="22" fill="#FFFDF8" opacity="0.9"/>
-  <text x="62.7" y="93.7" font-family="Space Grotesk, Arial, sans-serif" font-size="22" font-weight="700" fill="#111111">GoGoChinaTrips</text>
-  <text x="38.5" y="720" font-family="Space Grotesk, Arial, sans-serif" font-size="88" font-weight="700" fill="#FFFDF8">Tashi · Tibet</text>
-  <text x="38.5" y="755.2" font-family="Arial, sans-serif" font-size="18.7" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+  <rect width="700" height="800" fill="url(#glow)"/>
+  <circle cx="546" cy="208" r="80" fill="#FFFDF8" opacity="0.10"/>
+  <polygon points="0,800 0,490 140,499 280,539 420,567 560,553 700,511 700,800" fill="#FFFDF8" opacity="0.06"/><polygon points="0,800 0,628 140,668 280,660 420,613 560,577 700,593 700,800" fill="#FFFDF8" opacity="0.1"/><polygon points="0,800 0,748 140,719 280,691 420,695 560,726 700,751 700,800" fill="#FFFDF8" opacity="0.14"/>
+  <rect x="48" y="712.4" width="22" height="40" rx="2" fill="#FF4B35"/>
+  <text x="87.6" y="752" font-family="'Space Grotesk', Arial, sans-serif" font-size="44" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Tashi</text>
 </svg>

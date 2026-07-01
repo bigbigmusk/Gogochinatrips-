@@ -1,7 +1,11 @@
 // Generates self-hosted, on-brand SVG placeholder images into public/img/.
-// Each image always loads (no external image host), works fast in China, and
-// is trivially replaceable with real photography later — just drop a same-named
-// file in public/img/ or point src in src/lib/images.ts at your CDN.
+//
+// Why SVG placeholders: this build environment has no access to external photo
+// hosts, and common image CDNs (Unsplash etc.) are often blocked in mainland
+// China anyway. Self-hosted SVGs always load, are tiny, look intentional, and
+// are trivially replaceable with real photography — drop a same-named file into
+// public/img (e.g. beijing.jpg) and update the extension in src/lib/images.ts,
+// or point src at your own CDN.
 import { writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
@@ -10,15 +14,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, "..", "public", "img");
 mkdirSync(OUT, { recursive: true });
 
-// key -> [label, kind]. kind picks the aspect ratio.
 const LANDSCAPE = [1600, 1067];
 const HERO = [2000, 1250];
 const SQUARE = [800, 800];
 const PORTRAIT = [700, 800];
 
+// key -> [label, dimensions, plain?]. `plain` images (heroes) carry their own
+// headline in the page, so they render as clean gradient art with no label.
 const IMAGES = {
-  heroHome: ["Contemporary China", HERO],
-  ctaFinal: ["Go by high-speed rail", HERO],
+  heroHome: ["", HERO, true],
+  ctaFinal: ["", HERO, true],
+  spotlightTibet: ["Tibet", HERO],
+  spotlightChengdu: ["Chengdu", HERO],
+
   beijing: ["Beijing", LANDSCAPE],
   shanghai: ["Shanghai", LANDSCAPE],
   xian: ["Xi'an", LANDSCAPE],
@@ -29,45 +37,47 @@ const IMAGES = {
   xinjiang: ["Xinjiang", LANDSCAPE],
   guilin: ["Guilin", LANDSCAPE],
   tibet: ["Tibet", LANDSCAPE],
-  tripEssentials: ["China Essentials", LANDSCAPE],
-  tripChengduNight: ["Chengdu After Dark", LANDSCAPE],
-  tripWildYunnan: ["Wild Yunnan", LANDSCAPE],
-  tripBeijingStopover: ["Beijing Stopover", LANDSCAPE],
+
+  tripEssentials: ["Beijing · Xi'an · Shanghai", LANDSCAPE],
+  tripChengduNight: ["Chengdu Nights", LANDSCAPE],
+  tripWildYunnan: ["Yunnan", LANDSCAPE],
+  tripBeijingStopover: ["Beijing", LANDSCAPE],
   tripHighSpeed: ["High-Speed Rail", LANDSCAPE],
-  tripChongqing: ["Chongqing City Rush", LANDSCAPE],
-  tripZhangjiajie: ["Zhangjiajie & Beyond", LANDSCAPE],
-  tripSilkRoad: ["Silk Road West", LANDSCAPE],
-  tripTibet: ["Roof of the World", LANDSCAPE],
-  tripChengdu: ["Chengdu & Pandas", LANDSCAPE],
-  spotlightTibet: ["Tibet", HERO],
-  spotlightChengdu: ["Chengdu", HERO],
-  hostLina: ["Lina · Chengdu", PORTRAIT],
-  hostEric: ["Eric · Beijing", PORTRAIT],
-  hostMia: ["Mia · Yunnan", PORTRAIT],
-  hostTashi: ["Tashi · Tibet", PORTRAIT],
-  articlePay: ["Paying in China", LANDSCAPE],
-  articleApps: ["Essential apps", LANDSCAPE],
-  articleTrains: ["High-speed trains", LANDSCAPE],
-  articleEsim: ["Staying connected", LANDSCAPE],
-  articleVisa: ["Visa-free transit", LANDSCAPE],
-  articleSolo: ["Solo travel", LANDSCAPE],
-  articleDays: ["How many days", LANDSCAPE],
-  articleTips: ["Useful details", LANDSCAPE],
-  reviewPanda: ["Pandas", SQUARE],
-  reviewMarket: ["Night market", SQUARE],
+  tripChongqing: ["Chongqing", LANDSCAPE],
+  tripZhangjiajie: ["Zhangjiajie", LANDSCAPE],
+  tripSilkRoad: ["Silk Road", LANDSCAPE],
+  tripTibet: ["Tibet", LANDSCAPE],
+  tripChengdu: ["Chengdu", LANDSCAPE],
+
+  hostLina: ["Lina", PORTRAIT],
+  hostEric: ["Eric", PORTRAIT],
+  hostMia: ["Mia", PORTRAIT],
+  hostTashi: ["Tashi", PORTRAIT],
+
+  articlePay: ["Money", LANDSCAPE],
+  articleApps: ["Apps", LANDSCAPE],
+  articleTrains: ["Trains", LANDSCAPE],
+  articleEsim: ["Connectivity", LANDSCAPE],
+  articleVisa: ["Visas", LANDSCAPE],
+  articleSolo: ["Solo Travel", LANDSCAPE],
+  articleDays: ["Planning", LANDSCAPE],
+  articleTips: ["Good to Know", LANDSCAPE],
+
+  reviewPanda: ["Chengdu", SQUARE],
+  reviewMarket: ["Night Market", SQUARE],
   reviewMountain: ["Mountains", SQUARE],
 };
 
-// Gradient pairs built from the brand palette.
+// Refined gradient pairs drawn from the brand palette (deep, photographic).
 const THEMES = [
-  ["#FF4B35", "#7A1E14"],
-  ["#3155FF", "#141A4D"],
-  ["#009B7A", "#0A3B30"],
-  ["#FF4B35", "#3155FF"],
-  ["#3155FF", "#009B7A"],
-  ["#009B7A", "#B5361F"],
-  ["#1B1B1B", "#3155FF"],
-  ["#C43A28", "#111111"],
+  ["#FF5A45", "#7A1E14"],
+  ["#3A5BFF", "#141A4D"],
+  ["#0FB08C", "#0A3B30"],
+  ["#FF5A45", "#2A2140"],
+  ["#3A5BFF", "#0A3B30"],
+  ["#E8503A", "#1B1B24"],
+  ["#1E2A5A", "#0FB08C"],
+  ["#C43A28", "#161616"],
 ];
 
 function hash(s) {
@@ -75,50 +85,63 @@ function hash(s) {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
   return h;
 }
-
 function esc(s) {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&apos;");
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;");
 }
 
-function svg(key, label, [w, h]) {
+// A layered mountain-ridge silhouette gives an editorial landscape feel.
+function ridge(key, w, h, baseFrac, amp, opacity, seed) {
+  const baseY = h * baseFrac;
+  const steps = 5;
+  const pts = [];
+  for (let i = 0; i <= steps; i++) {
+    const x = (w / steps) * i;
+    const y = baseY + Math.sin(seed + i * 1.1) * amp * h;
+    pts.push(`${x.toFixed(0)},${y.toFixed(0)}`);
+  }
+  return `<polygon points="0,${h} ${pts.join(" ")} ${w},${h}" fill="#FFFDF8" opacity="${opacity}"/>`;
+}
+
+function svg(key, label, [w, h], plain) {
   const seed = hash(key);
   const [c1, c2] = THEMES[seed % THEMES.length];
-  const angle = 20 + (seed % 40);
-  // A simple layered mountain silhouette for a travel feel.
-  const baseY = h * 0.62;
-  const ridge = (offset, amp, opacity) => {
-    const pts = [];
-    const steps = 6;
-    for (let i = 0; i <= steps; i++) {
-      const x = (w / steps) * i;
-      const y = baseY + offset + Math.sin(seed + i * 1.3) * amp;
-      pts.push(`${x.toFixed(0)},${y.toFixed(0)}`);
-    }
-    return `<polygon points="0,${h} ${pts.join(" ")} ${w},${h}" fill="#FFFDF8" opacity="${opacity}"/>`;
-  };
-  const fontSize = Math.round(h * 0.11);
-  const tag = Math.round(h * 0.028);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img">
+  const angle = 15 + (seed % 30);
+  const ridges =
+    ridge(key, w, h, 0.66, 0.05, 0.06, seed) +
+    ridge(key, w, h, 0.78, 0.06, 0.10, seed + 2) +
+    ridge(key, w, h, 0.9, 0.04, 0.14, seed + 4);
+
+  let overlay = "";
+  if (!plain && label) {
+    const pad = Math.round(h * 0.06);
+    const fs = Math.round(h * 0.055);
+    const tickY = h - pad - fs * 0.35;
+    overlay = `
+  <rect x="${pad}" y="${tickY - fs * 0.55}" width="${Math.round(fs * 0.5)}" height="${Math.round(fs * 0.9)}" rx="2" fill="#FF4B35"/>
+  <text x="${pad + fs * 0.9}" y="${h - pad}" font-family="'Space Grotesk', Arial, sans-serif" font-size="${fs}" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">${esc(label)}</text>`;
+  }
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="g" gradientTransform="rotate(${angle})">
       <stop offset="0" stop-color="${c1}"/>
       <stop offset="1" stop-color="${c2}"/>
     </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="55%">
+      <stop offset="0" stop-color="#FFFDF8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFDF8" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="${w}" height="${h}" fill="url(#g)"/>
-  <circle cx="${w * 0.8}" cy="${h * 0.28}" r="${h * 0.14}" fill="#FFFDF8" opacity="0.14"/>
-  ${ridge(h * 0.06, h * 0.05, 0.10)}
-  ${ridge(h * 0.16, h * 0.07, 0.16)}
-  <rect x="${w * 0.055}" y="${h * 0.08}" width="${tag * 12}" height="${tag * 2}" rx="${tag}" fill="#FFFDF8" opacity="0.9"/>
-  <text x="${w * 0.055 + tag * 1.1}" y="${h * 0.08 + tag * 1.35}" font-family="Space Grotesk, Arial, sans-serif" font-size="${tag}" font-weight="700" fill="#111111">GoGoChinaTrips</text>
-  <text x="${w * 0.055}" y="${h * 0.9}" font-family="Space Grotesk, Arial, sans-serif" font-size="${fontSize}" font-weight="700" fill="#FFFDF8">${esc(label)}</text>
-  <text x="${w * 0.055}" y="${h * 0.9 + tag * 1.6}" font-family="Arial, sans-serif" font-size="${tag * 0.85}" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+  <rect width="${w}" height="${h}" fill="url(#glow)"/>
+  <circle cx="${Math.round(w * 0.78)}" cy="${Math.round(h * 0.26)}" r="${Math.round(h * 0.1)}" fill="#FFFDF8" opacity="0.10"/>
+  ${ridges}${overlay}
 </svg>`;
 }
 
 let count = 0;
-for (const [key, [label, dim]] of Object.entries(IMAGES)) {
-  writeFileSync(join(OUT, `${key}.svg`), svg(key, label, dim));
+for (const [key, [label, dim, plain]] of Object.entries(IMAGES)) {
+  writeFileSync(join(OUT, `${key}.svg`), svg(key, label, dim, !!plain));
   count++;
 }
 console.log(`Generated ${count} placeholder SVGs into public/img/`);

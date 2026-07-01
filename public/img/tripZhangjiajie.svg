@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067" viewBox="0 0 1600 1067" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067" viewBox="0 0 1600 1067" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(23)">
-      <stop offset="0" stop-color="#FF4B35"/>
-      <stop offset="1" stop-color="#3155FF"/>
+    <linearGradient id="g" gradientTransform="rotate(38)">
+      <stop offset="0" stop-color="#FF5A45"/>
+      <stop offset="1" stop-color="#2A2140"/>
     </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="55%">
+      <stop offset="0" stop-color="#FFFDF8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFDF8" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="1600" height="1067" fill="url(#g)"/>
-  <circle cx="1280" cy="298.76000000000005" r="149.38000000000002" fill="#FFFDF8" opacity="0.14"/>
-  <polygon points="0,1067 0,682 267,684 533,747 800,778 1067,732 1333,676 1600,693 1600,1067" fill="#FFFDF8" opacity="0.1"/>
-  <polygon points="0,1067 0,771 267,775 533,863 800,906 1067,841 1333,763 1600,786 1600,1067" fill="#FFFDF8" opacity="0.16"/>
-  <rect x="88" y="85.36" width="360" height="60" rx="30" fill="#FFFDF8" opacity="0.9"/>
-  <text x="121" y="125.86" font-family="Space Grotesk, Arial, sans-serif" font-size="30" font-weight="700" fill="#111111">GoGoChinaTrips</text>
-  <text x="88" y="960.3000000000001" font-family="Space Grotesk, Arial, sans-serif" font-size="117" font-weight="700" fill="#FFFDF8">Zhangjiajie &amp; Beyond</text>
-  <text x="88" y="1008.3000000000001" font-family="Arial, sans-serif" font-size="25.5" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+  <rect width="1600" height="1067" fill="url(#glow)"/>
+  <circle cx="1248" cy="277" r="107" fill="#FFFDF8" opacity="0.10"/>
+  <polygon points="0,1067 0,660 320,657 640,705 960,752 1280,747 1600,695 1600,1067" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1067 0,821 320,883 640,890 960,834 1280,776 1600,780 1600,1067" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1067 0,1002 320,970 640,927 960,921 1280,958 1600,997 1600,1067" fill="#FFFDF8" opacity="0.14"/>
+  <rect x="64" y="949.9" width="30" height="53" rx="2" fill="#FF4B35"/>
+  <text x="117.1" y="1003" font-family="'Space Grotesk', Arial, sans-serif" font-size="59" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Zhangjiajie</text>
 </svg>

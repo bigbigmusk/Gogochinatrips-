@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1250" viewBox="0 0 2000 1250" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1250" viewBox="0 0 2000 1250" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(52)">
-      <stop offset="0" stop-color="#FF4B35"/>
+    <linearGradient id="g" gradientTransform="rotate(37)">
+      <stop offset="0" stop-color="#FF5A45"/>
       <stop offset="1" stop-color="#7A1E14"/>
     </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="55%">
+      <stop offset="0" stop-color="#FFFDF8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFDF8" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="2000" height="1250" fill="url(#g)"/>
-  <circle cx="1600" cy="350.00000000000006" r="175.00000000000003" fill="#FFFDF8" opacity="0.14"/>
-  <polygon points="0,1250 0,826 333,899 667,900 1000,827 1333,788 1667,839 2000,907 2000,1250" fill="#FFFDF8" opacity="0.1"/>
-  <polygon points="0,1250 0,942 333,1044 667,1045 1000,943 1333,888 1667,960 2000,1054 2000,1250" fill="#FFFDF8" opacity="0.16"/>
-  <rect x="110" y="100" width="420" height="70" rx="35" fill="#FFFDF8" opacity="0.9"/>
-  <text x="148.5" y="147.25" font-family="Space Grotesk, Arial, sans-serif" font-size="35" font-weight="700" fill="#111111">GoGoChinaTrips</text>
-  <text x="110" y="1125" font-family="Space Grotesk, Arial, sans-serif" font-size="138" font-weight="700" fill="#FFFDF8">Tibet</text>
-  <text x="110" y="1181" font-family="Arial, sans-serif" font-size="29.75" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+  <rect width="2000" height="1250" fill="url(#glow)"/>
+  <circle cx="1560" cy="325" r="125" fill="#FFFDF8" opacity="0.10"/>
+  <polygon points="0,1250 0,801 400,866 800,886 1200,839 1600,777 2000,767 2000,1250" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1250 0,1050 400,1006 800,928 1200,902 1600,955 2000,1030 2000,1250" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1250 0,1102 400,1075 800,1102 1200,1154 1600,1174 2000,1140 2000,1250" fill="#FFFDF8" opacity="0.14"/>
+  <rect x="75" y="1112.8999999999999" width="35" height="62" rx="2" fill="#FF4B35"/>
+  <text x="137.1" y="1175" font-family="'Space Grotesk', Arial, sans-serif" font-size="69" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Tibet</text>
 </svg>

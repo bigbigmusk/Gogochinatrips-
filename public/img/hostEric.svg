@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="700" height="800" viewBox="0 0 700 800" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="800" viewBox="0 0 700 800" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(59)">
+    <linearGradient id="g" gradientTransform="rotate(24)">
       <stop offset="0" stop-color="#C43A28"/>
-      <stop offset="1" stop-color="#111111"/>
+      <stop offset="1" stop-color="#161616"/>
     </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="55%">
+      <stop offset="0" stop-color="#FFFDF8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFDF8" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="700" height="800" fill="url(#g)"/>
-  <circle cx="560" cy="224.00000000000003" r="112.00000000000001" fill="#FFFDF8" opacity="0.14"/>
-  <polygon points="0,800 0,560 117,513 233,512 350,558 467,584 583,551 700,508 700,800" fill="#FFFDF8" opacity="0.1"/>
-  <polygon points="0,800 0,646 117,580 233,579 350,644 467,680 583,634 700,574 700,800" fill="#FFFDF8" opacity="0.16"/>
-  <rect x="38.5" y="64" width="264" height="44" rx="22" fill="#FFFDF8" opacity="0.9"/>
-  <text x="62.7" y="93.7" font-family="Space Grotesk, Arial, sans-serif" font-size="22" font-weight="700" fill="#111111">GoGoChinaTrips</text>
-  <text x="38.5" y="720" font-family="Space Grotesk, Arial, sans-serif" font-size="88" font-weight="700" fill="#FFFDF8">Eric · Beijing</text>
-  <text x="38.5" y="755.2" font-family="Arial, sans-serif" font-size="18.7" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+  <rect width="700" height="800" fill="url(#glow)"/>
+  <circle cx="546" cy="208" r="80" fill="#FFFDF8" opacity="0.10"/>
+  <polygon points="0,800 0,544 140,502 280,489 420,519 560,558 700,565 700,800" fill="#FFFDF8" opacity="0.06"/><polygon points="0,800 0,576 140,604 280,653 420,671 560,637 700,589 700,800" fill="#FFFDF8" opacity="0.1"/><polygon points="0,800 0,734 140,752 280,735 420,701 560,688 700,710 700,800" fill="#FFFDF8" opacity="0.14"/>
+  <rect x="48" y="712.4" width="22" height="40" rx="2" fill="#FF4B35"/>
+  <text x="87.6" y="752" font-family="'Space Grotesk', Arial, sans-serif" font-size="44" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Eric</text>
 </svg>

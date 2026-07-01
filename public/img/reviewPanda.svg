@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(22)">
-      <stop offset="0" stop-color="#009B7A"/>
+    <linearGradient id="g" gradientTransform="rotate(27)">
+      <stop offset="0" stop-color="#0FB08C"/>
       <stop offset="1" stop-color="#0A3B30"/>
     </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="55%">
+      <stop offset="0" stop-color="#FFFDF8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#FFFDF8" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="800" height="800" fill="url(#g)"/>
-  <circle cx="640" cy="224.00000000000003" r="112.00000000000001" fill="#FFFDF8" opacity="0.14"/>
-  <polygon points="0,800 0,582 133,541 267,505 400,526 533,574 667,578 800,532 800,800" fill="#FFFDF8" opacity="0.1"/>
-  <polygon points="0,800 0,677 133,620 267,569 400,599 533,665 667,671 800,608 800,800" fill="#FFFDF8" opacity="0.16"/>
-  <rect x="44" y="64" width="264" height="44" rx="22" fill="#FFFDF8" opacity="0.9"/>
-  <text x="68.2" y="93.7" font-family="Space Grotesk, Arial, sans-serif" font-size="22" font-weight="700" fill="#111111">GoGoChinaTrips</text>
-  <text x="44" y="720" font-family="Space Grotesk, Arial, sans-serif" font-size="88" font-weight="700" fill="#FFFDF8">Pandas</text>
-  <text x="44" y="755.2" font-family="Arial, sans-serif" font-size="18.7" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+  <rect width="800" height="800" fill="url(#glow)"/>
+  <circle cx="624" cy="208" r="80" fill="#FFFDF8" opacity="0.10"/>
+  <polygon points="0,800 0,566 160,533 320,495 480,493 640,529 800,564 800,800" fill="#FFFDF8" opacity="0.06"/><polygon points="0,800 0,590 160,578 320,616 480,663 640,667 800,624 800,800" fill="#FFFDF8" opacity="0.1"/><polygon points="0,800 0,709 160,741 320,751 480,727 640,695 800,691 800,800" fill="#FFFDF8" opacity="0.14"/>
+  <rect x="48" y="712.4" width="22" height="40" rx="2" fill="#FF4B35"/>
+  <text x="87.6" y="752" font-family="'Space Grotesk', Arial, sans-serif" font-size="44" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Chengdu</text>
 </svg>
