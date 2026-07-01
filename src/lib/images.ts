@@ -77,8 +77,16 @@ const META = {
 
 export type ImageKey = keyof typeof META;
 
+// Real photos dropped into public/img are recorded here by scripts/scan-photos.mjs
+// (runs on build). A key with a real photo uses it; otherwise the SVG placeholder.
+import photoManifest from "../../public/img/photo-manifest.json";
+const manifest = photoManifest as Record<string, string>;
+
 export const IMAGES = Object.fromEntries(
-  Object.entries(META).map(([key, m]) => [key, { src: `/img/${key}.svg`, ...m }]),
+  Object.entries(META).map(([key, m]) => [
+    key,
+    { src: `/img/${manifest[key] ?? `${key}.svg`}`, ...m },
+  ]),
 ) as Record<ImageKey, SiteImage>;
 
 export function getImage(key: ImageKey): SiteImage {

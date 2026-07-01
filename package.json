@@ -5,12 +5,13 @@
   "description": "GoGoChinaTrips — China, without the guesswork. Curated small-group tours, private journeys and local experiences for international travelers.",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/gen-placeholders.mjs",
+    "prebuild": "node scripts/gen-placeholders.mjs && node scripts/scan-photos.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "gen:images": "node scripts/gen-placeholders.mjs"
+    "gen:images": "node scripts/gen-placeholders.mjs",
+    "photos": "node scripts/scan-photos.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
