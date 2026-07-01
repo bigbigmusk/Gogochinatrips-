@@ -7,16 +7,10 @@ const nextConfig = {
   output: "export",
   images: {
     // Static export can't use the on-demand Image Optimization API, so images
-    // are served as-is. Replace the Unsplash placeholders (see src/lib/images.ts)
-    // and this remote allow-list with the brand's own CDN before launch.
+    // are served as-is. Imagery is self-hosted in /public/img (see
+    // src/lib/images.ts). If you later serve real photos from a CDN, add its
+    // domain to `remotePatterns` here.
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
-      },
-    ],
   },
 };
 

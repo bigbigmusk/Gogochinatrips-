@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
+import { Spotlight } from "@/components/sections/Spotlight";
 import { EditorialCategoryGrid } from "@/components/sections/EditorialCategoryGrid";
 import { TripCarousel } from "@/components/sections/TripCarousel";
 import { TripMatcher } from "@/components/sections/TripMatcher";
@@ -33,6 +34,7 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustStrip />
+      <Spotlight />
       <EditorialCategoryGrid />
 
       {/* Best-selling trips */}

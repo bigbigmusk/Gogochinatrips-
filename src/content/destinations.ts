@@ -221,6 +221,38 @@ export const destinations: Destination[] = [
     ],
   },
   {
+    slug: "tibet",
+    name: "Tibet",
+    region: "Tibetan Plateau, Western China",
+    personality: "The roof of the world — high monasteries, prayer flags and Himalayan light.",
+    intro:
+      "At over 3,600 metres, Lhasa and the Tibetan plateau offer some of the most extraordinary landscapes and living spiritual culture on earth — the Potala Palace, ancient monasteries, turquoise lakes and the thin, clear air of the high Himalaya.",
+    image: "tibet",
+    reasonsToVisit: [
+      "The Potala Palace and Jokhang Temple in Lhasa",
+      "Great monasteries like Sera and Drepung",
+      "Sacred high-altitude lakes such as Yamdrok",
+      "A living Buddhist culture found nowhere else",
+    ],
+    bestTime: "April–June and September–October for clear skies and milder days.",
+    recommendedDays: "6–8 days, with time to acclimatize",
+    topExperiences: [
+      { title: "The Potala Palace", description: "Climb through the former winter palace of the Dalai Lamas, dominating the Lhasa skyline." },
+      { title: "Jokhang & the Barkhor", description: "Join pilgrims circling Tibet's holiest temple along the Barkhor kora." },
+      { title: "Yamdrok Lake", description: "Drive to a sacred turquoise lake framed by snow peaks." },
+    ],
+    neighborhoods: [
+      { name: "Old Lhasa & Barkhor", description: "The pilgrimage heart of the city around the Jokhang." },
+      { name: "Sera & Drepung", description: "Great monasteries on the edge of Lhasa, famous for monk debates." },
+    ],
+    localFood: ["Tibetan momos (dumplings)", "Thukpa noodle soup", "Yak butter tea", "Tsampa barley"],
+    practical: [
+      { label: "Altitude", value: "Lhasa sits above 3,600m — arrive slowly and rest on day one. Consult your doctor first." },
+      { label: "Permits", value: "Tibet requires a Tibet Travel Permit arranged in advance; we handle current requirements for you." },
+      { label: "Getting there", value: "By the high-altitude railway or a short flight; always with a licensed local guide." },
+    ],
+  },
+  {
     slug: "guilin",
     name: "Guilin & the Li River",
     region: "Guangxi, Southern China",

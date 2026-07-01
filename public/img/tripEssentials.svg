@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067" viewBox="0 0 1600 1067" role="img">
+  <defs>
+    <linearGradient id="g" gradientTransform="rotate(30)">
+      <stop offset="0" stop-color="#009B7A"/>
+      <stop offset="1" stop-color="#0A3B30"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1067" fill="url(#g)"/>
+  <circle cx="1280" cy="298.76000000000005" r="149.38000000000002" fill="#FFFDF8" opacity="0.14"/>
+  <polygon points="0,1067 0,678 267,690 533,755 800,776 1067,724 1333,674 1600,700 1600,1067" fill="#FFFDF8" opacity="0.1"/>
+  <polygon points="0,1067 0,765 267,783 533,873 800,904 1067,830 1333,760 1600,796 1600,1067" fill="#FFFDF8" opacity="0.16"/>
+  <rect x="88" y="85.36" width="360" height="60" rx="30" fill="#FFFDF8" opacity="0.9"/>
+  <text x="121" y="125.86" font-family="Space Grotesk, Arial, sans-serif" font-size="30" font-weight="700" fill="#111111">GoGoChinaTrips</text>
+  <text x="88" y="960.3000000000001" font-family="Space Grotesk, Arial, sans-serif" font-size="117" font-weight="700" fill="#FFFDF8">China Essentials</text>
+  <text x="88" y="1008.3000000000001" font-family="Arial, sans-serif" font-size="25.5" fill="#FFFDF8" opacity="0.75">Placeholder image · replace before launch</text>
+</svg>
