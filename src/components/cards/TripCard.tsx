@@ -13,9 +13,19 @@ import { Rating } from "@/components/ui/Rating";
  * Product card for a trip. Shows image, category, name, duration, route,
  * price, rating, group size, style, a favorite toggle and a customization hint.
  */
-export function TripCard({ trip, className }: { trip: Trip; className?: string }) {
+export function TripCard({
+  trip,
+  className,
+  onOpen,
+}: {
+  trip: Trip;
+  className?: string;
+  /** Optional analytics hook fired when the card's link is opened. */
+  onOpen?: () => void;
+}) {
   const [saved, setSaved] = useState(false);
   const img = getImage(trip.image);
+  const hasReviews = trip.reviewCount > 0;
 
   return (
     <article
@@ -51,13 +61,20 @@ export function TripCard({ trip, className }: { trip: Trip; className?: string }
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-lg font-semibold leading-snug">
-            <Link href={`/trips/${trip.slug}`} className="after:absolute after:inset-0 hover:text-gogo-red">
+            <Link href={`/trips/${trip.slug}`} onClick={onOpen} className="after:absolute after:inset-0 hover:text-gogo-red">
               {trip.name}
             </Link>
           </h3>
         </div>
 
-        <Rating value={trip.rating} reviewCount={trip.reviewCount} />
+        {/* Honest social proof: real rating only when reviews exist. */}
+        {hasReviews ? (
+          <Rating value={trip.rating} reviewCount={trip.reviewCount} />
+        ) : (
+          <span className="inline-flex w-fit items-center gap-1.5 rounded-pill bg-jade/10 px-2.5 py-0.5 text-xs font-semibold text-jade">
+            New trip
+          </span>
+        )}
 
         <ul className="flex flex-col gap-1.5 text-sm text-muted-text">
           <li className="flex items-center gap-2">

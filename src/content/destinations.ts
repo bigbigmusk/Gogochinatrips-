@@ -93,6 +93,8 @@ export const destinations: Destination[] = [
     slug: "chengdu",
     name: "Chengdu",
     region: "Southwestern China",
+    featured: true,
+    strategicPriority: 100,
     personality: "Tea houses, pandas and serious late-night eating.",
     intro:
       "The laid-back capital of Sichuan is China's food and tea-house heartland — home to giant pandas, fiery hotpot and a famously unhurried pace of life.",
@@ -224,6 +226,8 @@ export const destinations: Destination[] = [
     slug: "tibet",
     name: "Tibet",
     region: "Tibetan Plateau, Western China",
+    featured: true,
+    strategicPriority: 95,
     personality: "The roof of the world — high monasteries, prayer flags and Himalayan light.",
     intro:
       "At over 3,600 metres, Lhasa and the Tibetan plateau offer some of the most extraordinary landscapes and living spiritual culture on earth — the Potala Palace, ancient monasteries, turquoise lakes and the thin, clear air of the high Himalaya.",
@@ -291,4 +295,21 @@ export function getDestinationBySlug(slug: string): Destination | undefined {
 /** Count of trips that visit a given destination — used on cards. */
 export function getTripCountForDestination(slug: string): number {
   return getTripsByDestination(slug).length;
+}
+
+export interface DestinationFilterOption {
+  slug: string;
+  name: string;
+  featured: boolean;
+}
+
+/**
+ * Ordered destination options for the filter UI, generated from the content
+ * model. Strategic core destinations (Chengdu, then Tibet) come first, then the
+ * rest in their editorial order. Not a hand-duplicated list.
+ */
+export function getDestinationFilterOptions(): DestinationFilterOption[] {
+  return [...destinations]
+    .sort((a, b) => (b.strategicPriority ?? 0) - (a.strategicPriority ?? 0))
+    .map((d) => ({ slug: d.slug, name: d.name, featured: !!d.featured }));
 }

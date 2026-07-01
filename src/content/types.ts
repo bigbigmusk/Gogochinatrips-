@@ -65,6 +65,16 @@ export interface Trip {
   image: ImageKey;
   gallery: ImageKey[];
   bestSeller?: boolean;
+  /** Free-text search aliases (landmarks, regions, keywords) for this trip. */
+  searchAliases?: string[];
+  /** Short discovery tags shown for search relevance. */
+  tags?: string[];
+  /** Higher = ranked earlier in "recommended" sort (strategic destinations). */
+  strategicPriority?: number;
+  /** Flagship product flag (badge + ranking boost). */
+  featured?: boolean;
+  /** Newly launched with no verified reviews yet — shown as "New". */
+  isNew?: boolean;
   customizable: boolean;
   highlights: string[];
   whoFor: string[];
@@ -83,6 +93,10 @@ export interface Destination {
   slug: string;
   name: string;
   region: string;
+  /** Strategic core destination (Chengdu, Tibet) — surfaced first + badged. */
+  featured?: boolean;
+  /** Higher = earlier in ordered destination lists. */
+  strategicPriority?: number;
   personality: string;
   intro: string;
   image: ImageKey;

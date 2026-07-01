@@ -1,38 +1,16 @@
 "use client";
 
-import { getAllDestinations } from "@/content/destinations";
+import { useEffect, useState } from "react";
+import { getDestinationFilterOptions } from "@/content/destinations";
 import { getAllTravelStyles } from "@/content/travel-styles";
 import { formatPriceUSD, cn } from "@/lib/utils";
+import { type Filters, EMPTY_FILTERS, PRICE_CEILING } from "@/lib/trip-search";
 
-export interface Filters {
-  destinations: string[];
-  styles: string[];
-  tripType: "any" | "small-group" | "private";
-  months: number[];
-  activity: string[];
-  durationBuckets: string[];
-  soloFriendly: boolean;
-  familyFriendly: boolean;
-  priceMin: number;
-  priceMax: number;
-}
+// Re-export so existing imports from "./FilterBar" keep working.
+export { EMPTY_FILTERS };
+export type { Filters };
 
-export const EMPTY_FILTERS: Filters = {
-  destinations: [],
-  styles: [],
-  tripType: "any",
-  months: [],
-  activity: [],
-  durationBuckets: [],
-  soloFriendly: false,
-  familyFriendly: false,
-  priceMin: 0,
-  priceMax: 5000,
-};
-
-const MONTHS = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-];
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const DURATION_BUCKETS = [
   { key: "short", label: "Up to 4 days" },
@@ -55,14 +33,22 @@ function FilterGroup({ legend, children }: { legend: string; children: React.Rea
   );
 }
 
-function Toggle({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function Toggle({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "rounded-pill border px-3 py-1.5 text-sm transition-colors",
+        "inline-flex items-center gap-1.5 rounded-pill border px-3 py-1.5 text-sm transition-colors",
         active ? "border-ink bg-ink text-paper" : "border-soft-gray bg-paper text-ink hover:border-ink",
       )}
     >
@@ -73,9 +59,17 @@ function Toggle({ active, onClick, children }: { active: boolean; onClick: () =>
 
 /** Reusable filter controls, used in the desktop sidebar and the mobile sheet. */
 export function FilterBar({ filters, onChange }: { filters: Filters; onChange: (f: Filters) => void }) {
-  const destinations = getAllDestinations();
+  const destinationOptions = getDestinationFilterOptions();
   const styles = getAllTravelStyles();
   const set = (patch: Partial<Filters>) => onChange({ ...filters, ...patch });
+
+  // Live label while dragging the price slider; only commit (a URL history
+  // entry) once the user releases, so back/forward history stays clean.
+  const [priceDraft, setPriceDraft] = useState(filters.priceMax);
+  useEffect(() => setPriceDraft(filters.priceMax), [filters.priceMax]);
+  const commitPrice = () => {
+    if (priceDraft !== filters.priceMax) set({ priceMax: priceDraft });
+  };
 
   return (
     <div className="rounded-card border border-soft-gray bg-paper p-5">
@@ -83,11 +77,24 @@ export function FilterBar({ filters, onChange }: { filters: Filters; onChange: (
 
       <FilterGroup legend="Destination">
         <div className="flex flex-wrap gap-2">
-          {destinations.map((d) => (
-            <Toggle key={d.slug} active={filters.destinations.includes(d.slug)} onClick={() => set({ destinations: toggle(filters.destinations, d.slug) })}>
-              {d.name}
-            </Toggle>
-          ))}
+          {destinationOptions.map((d) => {
+            const active = filters.destinations.includes(d.slug);
+            return (
+              <Toggle key={d.slug} active={active} onClick={() => set({ destinations: toggle(filters.destinations, d.slug) })}>
+                {d.name}
+                {d.featured && (
+                  <span
+                    className={cn(
+                      "rounded-pill px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+                      active ? "bg-paper/20 text-paper" : "bg-gogo-red/10 text-gogo-red",
+                    )}
+                  >
+                    Core
+                  </span>
+                )}
+              </Toggle>
+            );
+          })}
         </div>
       </FilterGroup>
 
@@ -111,20 +118,23 @@ export function FilterBar({ filters, onChange }: { filters: Filters; onChange: (
         </div>
       </FilterGroup>
 
-      <FilterGroup legend={`Max price — ${formatPriceUSD(filters.priceMax)}`}>
+      <FilterGroup legend={`Max price — ${formatPriceUSD(priceDraft)}`}>
         <input
           type="range"
           min={0}
-          max={5000}
+          max={PRICE_CEILING}
           step={100}
-          value={filters.priceMax}
-          onChange={(e) => set({ priceMax: Number(e.target.value) })}
+          value={priceDraft}
+          onChange={(e) => setPriceDraft(Number(e.target.value))}
+          onPointerUp={commitPrice}
+          onKeyUp={commitPrice}
+          onBlur={commitPrice}
           className="w-full accent-gogo-red"
           aria-label="Maximum price"
         />
         <div className="mt-1 flex justify-between text-xs text-muted-text">
           <span>$0</span>
-          <span>$5,000+</span>
+          <span>${PRICE_CEILING.toLocaleString()}+</span>
         </div>
       </FilterGroup>
 

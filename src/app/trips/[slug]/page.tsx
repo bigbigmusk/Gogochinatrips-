@@ -106,7 +106,13 @@ export default async function TripDetailPage({
           <p className="mt-3 max-w-2xl text-lg text-muted-text">{trip.tagline}</p>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-            <Rating value={trip.rating} reviewCount={trip.reviewCount} />
+            {trip.reviewCount > 0 ? (
+              <Rating value={trip.rating} reviewCount={trip.reviewCount} />
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-pill bg-jade/10 px-2.5 py-0.5 text-xs font-semibold text-jade">
+                New trip
+              </span>
+            )}
             <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-muted-text" aria-hidden="true" /> {durationLabel}</span>
             <span className="flex items-center gap-1.5"><MapPin className="h-4 w-4 text-muted-text" aria-hidden="true" /> {trip.route.join(" – ")}</span>
             <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-muted-text" aria-hidden="true" /> Up to {trip.maxGroupSize}</span>
