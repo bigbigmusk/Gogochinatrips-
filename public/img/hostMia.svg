@@ -13,6 +13,4 @@
   <rect width="700" height="800" fill="url(#glow)"/>
   <circle cx="546" cy="208" r="80" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,800 0,542 140,568 280,550 420,508 560,488 700,512 700,800" fill="#FFFDF8" opacity="0.06"/><polygon points="0,800 0,658 140,609 280,577 420,596 560,646 700,672 700,800" fill="#FFFDF8" opacity="0.1"/><polygon points="0,800 0,690 140,697 280,729 420,751 560,740 700,706 700,800" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="48" y="712.4" width="22" height="40" rx="2" fill="#FF4B35"/>
-  <text x="87.6" y="752" font-family="'Space Grotesk', Arial, sans-serif" font-size="44" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Mia</text>
 </svg>

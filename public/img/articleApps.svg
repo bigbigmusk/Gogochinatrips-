@@ -13,6 +13,4 @@
   <rect width="1600" height="1067" fill="url(#glow)"/>
   <circle cx="1248" cy="277" r="107" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,1067 0,682 320,737 640,756 960,718 1280,665 1600,654 1600,1067" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1067 0,896 320,861 640,794 960,769 1280,813 1600,878 1600,1067" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1067 0,942 320,918 640,939 960,984 1280,1003 1600,975 1600,1067" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="64" y="949.9" width="30" height="53" rx="2" fill="#FF4B35"/>
-  <text x="117.1" y="1003" font-family="'Space Grotesk', Arial, sans-serif" font-size="59" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Apps</text>
 </svg>

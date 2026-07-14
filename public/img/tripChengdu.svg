@@ -13,6 +13,4 @@
   <rect width="1600" height="1067" fill="url(#glow)"/>
   <circle cx="1248" cy="277" r="107" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,1067 0,693 320,745 640,753 960,707 1280,658 1600,659 1600,1067" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1067 0,895 320,849 640,785 960,773 1280,826 1600,886 1600,1067" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1067 0,935 320,918 640,948 960,991 1280,1001 1600,966 1600,1067" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="64" y="949.9" width="30" height="53" rx="2" fill="#FF4B35"/>
-  <text x="117.1" y="1003" font-family="'Space Grotesk', Arial, sans-serif" font-size="59" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Chengdu</text>
 </svg>

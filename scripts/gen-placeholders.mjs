@@ -111,15 +111,11 @@ function svg(key, label, [w, h], plain) {
     ridge(key, w, h, 0.78, 0.06, 0.10, seed + 2) +
     ridge(key, w, h, 0.9, 0.04, 0.14, seed + 4);
 
-  let overlay = "";
-  if (!plain && label) {
-    const pad = Math.round(h * 0.06);
-    const fs = Math.round(h * 0.055);
-    const tickY = h - pad - fs * 0.35;
-    overlay = `
-  <rect x="${pad}" y="${tickY - fs * 0.55}" width="${Math.round(fs * 0.5)}" height="${Math.round(fs * 0.9)}" rx="2" fill="#FF4B35"/>
-  <text x="${pad + fs * 0.9}" y="${h - pad}" font-family="'Space Grotesk', Arial, sans-serif" font-size="${fs}" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">${esc(label)}</text>`;
-  }
+  // Placeholders are plain gradient art with no baked-in text: card UIs overlay
+  // their own titles, and a label inside the image would collide with them.
+  void plain;
+  void label;
+  const overlay = "";
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" preserveAspectRatio="xMidYMid slice">
   <defs>

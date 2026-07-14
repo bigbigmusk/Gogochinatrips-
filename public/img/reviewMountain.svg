@@ -13,6 +13,4 @@
   <rect width="800" height="800" fill="url(#glow)"/>
   <circle cx="624" cy="208" r="80" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,800 0,544 160,568 320,548 480,506 640,488 800,513 800,800" fill="#FFFDF8" opacity="0.06"/><polygon points="0,800 0,656 160,607 320,576 480,598 640,648 800,672 800,800" fill="#FFFDF8" opacity="0.1"/><polygon points="0,800 0,689 160,698 320,730 480,752 640,738 800,705 800,800" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="48" y="712.4" width="22" height="40" rx="2" fill="#FF4B35"/>
-  <text x="87.6" y="752" font-family="'Space Grotesk', Arial, sans-serif" font-size="44" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Mountains</text>
 </svg>

@@ -13,6 +13,4 @@
   <rect width="700" height="800" fill="url(#glow)"/>
   <circle cx="546" cy="208" r="80" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,800 0,516 140,556 280,566 420,534 560,496 700,492 700,800" fill="#FFFDF8" opacity="0.06"/><polygon points="0,800 0,672 140,641 280,591 420,578 560,615 700,662 700,800" fill="#FFFDF8" opacity="0.1"/><polygon points="0,800 0,703 140,688 280,708 420,741 560,751 700,727 700,800" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="48" y="712.4" width="22" height="40" rx="2" fill="#FF4B35"/>
-  <text x="87.6" y="752" font-family="'Space Grotesk', Arial, sans-serif" font-size="44" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Lina</text>
 </svg>

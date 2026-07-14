@@ -13,6 +13,4 @@
   <rect width="2000" height="1250" fill="url(#glow)"/>
   <circle cx="1560" cy="325" r="125" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,1250 0,801 400,866 800,886 1200,839 1600,777 2000,767 2000,1250" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1250 0,1050 400,1006 800,928 1200,902 1600,955 2000,1030 2000,1250" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1250 0,1102 400,1075 800,1102 1200,1154 1600,1174 2000,1140 2000,1250" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="75" y="1112.8999999999999" width="35" height="62" rx="2" fill="#FF4B35"/>
-  <text x="137.1" y="1175" font-family="'Space Grotesk', Arial, sans-serif" font-size="69" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Tibet</text>
 </svg>

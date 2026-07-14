@@ -13,6 +13,4 @@
   <rect width="1600" height="1067" fill="url(#glow)"/>
   <circle cx="1248" cy="277" r="107" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,1067 0,758 320,727 640,672 960,652 1280,689 1600,743 1600,1067" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1067 0,804 320,768 640,802 960,869 1280,896 1600,853 1600,1067" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1067 0,933 320,977 640,1003 960,982 1280,937 1600,918 1600,1067" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="64" y="949.9" width="30" height="53" rx="2" fill="#FF4B35"/>
-  <text x="117.1" y="1003" font-family="'Space Grotesk', Arial, sans-serif" font-size="59" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Beijing</text>
 </svg>

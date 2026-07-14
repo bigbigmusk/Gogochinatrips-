@@ -13,6 +13,4 @@
   <rect width="1600" height="1067" fill="url(#glow)"/>
   <circle cx="1248" cy="277" r="107" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,1067 0,738 320,682 640,651 960,678 1280,734 1600,757 1600,1067" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1067 0,770 320,790 640,856 960,896 1280,866 1600,799 1600,1067" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1067 0,968 320,1001 640,990 960,946 1280,918 1600,936 1600,1067" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="64" y="949.9" width="30" height="53" rx="2" fill="#FF4B35"/>
-  <text x="117.1" y="1003" font-family="'Space Grotesk', Arial, sans-serif" font-size="59" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Money</text>
 </svg>

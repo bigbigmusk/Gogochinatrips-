@@ -13,6 +13,4 @@
   <rect width="1600" height="1067" fill="url(#glow)"/>
   <circle cx="1248" cy="277" r="107" fill="#FFFDF8" opacity="0.10"/>
   <polygon points="0,1067 0,757 320,721 640,667 960,653 1280,695 1600,747 1600,1067" fill="#FFFDF8" opacity="0.06"/><polygon points="0,1067 0,798 320,769 640,809 960,875 1280,894 1600,846 1600,1067" fill="#FFFDF8" opacity="0.1"/><polygon points="0,1067 0,937 320,982 640,1003 960,977 1280,933 1600,919 1600,1067" fill="#FFFDF8" opacity="0.14"/>
-  <rect x="64" y="949.9" width="30" height="53" rx="2" fill="#FF4B35"/>
-  <text x="117.1" y="1003" font-family="'Space Grotesk', Arial, sans-serif" font-size="59" font-weight="700" fill="#FFFDF8" letter-spacing="0.5">Planning</text>
 </svg>
