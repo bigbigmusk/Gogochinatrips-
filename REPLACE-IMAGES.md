@@ -15,15 +15,36 @@ Pick **one** of the two methods below.
 
 That's it — any key with a matching file is used automatically.
 
-## Method 2 — Download from URLs
+## Method 2 — Auto-download real photos (ready to run)
 
-1. Edit `scripts/photos.urls.json` and paste a direct image URL for each key you
-   want (leave `""` to keep the placeholder).
-2. On a machine with internet access, run:
-   ```bash
-   node scripts/fetch-photos.mjs
-   npm run build
-   ```
+`scripts/photos.urls.json` is **already filled** with keyword-matched real-photo
+URLs (via loremflickr.com) for every destination, trip and article — the Tibet
+photos cropped from the PDFs and the host portraits are intentionally left blank
+so they aren't overwritten.
+
+**On any computer with internet access** (this download can't run in every
+sandbox), run:
+
+```bash
+npm install
+npm run fetch:images   # downloads real photos into public/img
+npm run build          # rebuilds out/ using them
+```
+
+Prefer different photos? Edit the URLs in `scripts/photos.urls.json` (any direct
+image URL works) and re-run.
+
+### Cloudflare Pages (Git integration) — fully automatic
+
+If you connect the GitHub repo to Cloudflare Pages, set the **build command** to:
+
+```
+node scripts/fetch-photos.mjs && npm run build
+```
+
+Cloudflare's build servers have internet, so every deploy downloads fresh real
+photos automatically. (A failed download just keeps that item's placeholder — it
+never breaks the build.)
 
 ## Image keys and what each shows
 

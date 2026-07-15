@@ -30,8 +30,12 @@ for (const [key, url] of Object.entries(map)) {
   try {
     const res = await fetch(url, { redirect: "follow", headers: { "User-Agent": "GoGoChinaTrips-image-fetch" } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const ct = res.headers.get("content-type") || "";
+    if (!ct.startsWith("image/")) throw new Error(`not an image (${ct || "unknown"})`);
     const buf = Buffer.from(await res.arrayBuffer());
-    const file = `${key}.${extFromUrl(url)}`;
+    if (buf.length < 2000) throw new Error("suspiciously small");
+    const extByCt = ct.includes("png") ? "png" : ct.includes("webp") ? "webp" : ct.includes("avif") ? "avif" : "jpg";
+    const file = `${key}.${extByCt}`;
     writeFileSync(join(IMG, file), buf);
     console.log(`✓ ${key} → ${file} (${Math.round(buf.length / 1024)} KB)`);
     ok++;
